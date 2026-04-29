@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+body {background-color: #d37388; font-family: "Luckiest Guy", cursive;}
+.wrapper {margin: 20px auto; width: 1200px; height: 700px; position: relative; overflow: hidden;}
+.ground {background-color: #d37388; width: 100%; height: 100%; position: absolute; bottom: 0; z-index: 0;}
+.bunny_wrap {width: 450px; height: 380px; position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%) scale(1);}
+.mini_bunny_wrap {width: 450px; height: 380px; position: absolute; left: 28%; bottom: -19px; transform: translateX(-50%) scale(0.7);}
+h1 {
+    z-index: 5;
+    position: absolute; top: 34%; left: 50%; transform: translateX(-50%);
+    font-size: 90px; color: #fff;
+    display: flex; justify-content: center; gap: 20px; white-space: nowrap;
+    animation: spacing 4s ease-in-out forwards 4s;
+}
+@keyframes spacing {
+  0% {gap: 20px;}
+  65% {gap: 300px;}
+  90% {gap: 300px;}
+  100% {gap: 20px;}
+}
+
+/* arrow */
+.arrow {z-index: 5; position: absolute; right: -54px; top: 80px; width: 50px; height: 3px; background-color: #fff;}
+.arrow::after {content: ""; position: absolute; top: -6px; right: 1px; transform: rotateZ(-45deg); width: 8px; height: 13px; background-color: #fbe0e5; border-radius: 50% 50% 0 0;}
+.arrow::before {content: ""; position: absolute; top: -6px; right: -3px; transform: rotateZ(45deg); width: 8px; height: 13px; background-color: #fbe0e5; border-radius: 50% 50% 0 0;}
+.arrowhead-wrap {overflow: hidden; position: absolute; top: -10px; right: 45px; width: 24px; height: 24px;}
+.arrowhead {z-index: 6; position: absolute; top: 5px; right: -6px; width: 12px; height: 12px; transform: rotateZ(45deg); background-color: #fbe0e5; border-radius: 0 100% 0 0;}
+
+/* bunny */
+.rabbit {position: relative; bottom: -400px;}
+.bunny {z-index: 1; position: absolute; left: 50%; bottom: 50px; transform: translateX(-50%); width: 200px; height: 200px; background-color: #fbe0e5; border-radius: 50% 50% 35% 35%;}
+
+/* bunny face */
+.bunny .eye {position: absolute; top: 60px; width: 28px; height: 28px; background: #333; border-radius: 50%;}
+.bunny .eye.left {left: 50px;}
+.bunny .eye.left::after {content: ""; position: absolute; bottom: 7px; right: 7px; width: 8px; height: 8px; background-color: #fff; border-radius: 50%;}
+.bunny .eye.right {right: 50px;}
+.bunny .eye.right::after {content: ""; position: absolute; left: 7px; bottom: 7px; width: 8px; height: 8px; background-color: #fff; border-radius: 50%;}
+.bunny .mouth {position: absolute; top: 85px; left: 50%; transform: translateX(-50%); width: 45px; height: 30px; background-color: #f7b5c1; border-radius: 50%;}
+.bunny .nose { position: absolute; top: 83px; left: 50%; transform: translate(-50%, -50%); width: 18px; height: 14px; background-color: #333; border-radius: 40% 40% 55% 55%;}
+.bunny .nose::after { content: ""; position: absolute; top: 13px; left: 50%; transform: translateX(-50%); width: 3px; height: 12px; background-color: #333; border-radius: 3px 3px 3px 3px;}
+
+/* bunny arm */
+.bunny .arm {position: absolute; top: 160px; width: 45px; height: 50px; background-color: #f7b5c1; border-radius: 55% 55% 45% 45%;}
+.bunny .arm.left {left: 40px;}
+.bunny .arm.right {right: 40px;}
+
+/* bunny foot */
+.rabbit .foot {z-index: -1; position: absolute; bottom: 50px; width: 100px; height: 60px; background-color: #f7b5c1; border-radius: 100% 0% 45% 45%;}
+.rabbit .foot.left {left: 25%;}
+.rabbit .foot.right {right: 25%; border-radius: 0% 100% 45% 45%;}
+
+/* bunny ear */
+.rabbit .ear {z-index: -2; position: absolute; bottom: 210px; width: 70px; height: 120px; background-color: #fbe0e5; border-radius: 100% 100% 80% 80%;}
+.rabbit .ear.left {left: 32%; transform: rotateZ(-15deg);}
+.rabbit .ear.left::after {left: 32%; transform: rotateZ(0deg); content: ""; position: absolute; left: 14px; bottom: 5px; width: 45px; height: 86px; background-color: #f7b5c1; border-radius: 100% 100% 80% 80%;}
+.rabbit .ear.right {right: 32%; transform: rotateZ(15deg);}
+.rabbit .ear.right::after {right: 32%; transform: rotateZ(0deg); content: ""; position: absolute; left: 14px; bottom: 5px; width: 45px; height: 86px; background-color: #f7b5c1; border-radius: 100% 100% 80% 80%;}
+
+/* balloon */
+.bunny_wrap .balloon {
+  z-index: 3; position: absolute; left: 50%; bottom: 75px; transform: translateX(-50%) scale(0); transform-origin: center;
+  width: 120px; height: 120px; background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 1));
+  border-radius: 50%;}
+
+/* [animation] arrow attack */
+.arrow {animation: attack 1.2s forwards 7.2s;}
+@keyframes attack {
+  0% {right: 0%;}
+  100% {right: 110%;}
+}
+
+/* [animation] balloon blow (bunny size) */
+.rabbit {animation: blow 5s ease-in-out forwards 1s;}
+@keyframes blow {
+  0% {transform: scale(1);}
+  20% {transform: scale(1.05);} /* 들숨 */
+  100% {transform: scale(1);} /* 날숨 */
+}
+
+/* [animation] balloon blow (balloon size) */
+.bunny_wrap .balloon {animation: balloon 5s ease-in-out forwards 1s, pop 0.3s ease-out forwards 7.5s;}
+@keyframes balloon {
+    0%{transform: translateX(-50%) translateY(0) scale(0);}    
+    25%{transform: translateX(-50%) translateY(0) scale(0);}    
+    60%{transform: translateX(-50%) translateY(-70px) scale(2);}    
+    100%{transform: translateX(-50%) translateY(-70px) scale(2);}
+}
+@keyframes pop {
+    0%{transform: translateX(-50%) translateY(-80px) scale(2); opacity: 1;}    
+    60%{transform: translateX(-50%) translateY(-80px) scale(2.3); opacity: 1;}    
+    100%{transform: translateX(-50%) translateY(-80px) scale(2.3); opacity: 0;}  
+}
+
+/* [animation] balloon blow (face move) */
+.bunny .eye {animation: eyeMove 1s ease forwards 4s, eyeBack 1s ease forwards 7.5s;}
+@keyframes eyeMove {
+    0%{transform: translateY(0px)}    
+    100%{transform: translateY(-10px)}
+}
+@keyframes eyeBack {
+    0%{transform: translateY(-10px)}   
+    100%{transform: translateY(0px)}
+}
+
+.bunny .nose {animation: noseMove 1s ease forwards 4s, noseBack 1s ease forwards 7.5s;}
+@keyframes noseMove {
+    0%{transform: translate(-50%, -50%) translateY(0)}    
+    100%{transform: translate(-50%, -50%) translateY(-10px)}
+}
+@keyframes noseBack {
+    0%{transform: translate(-50%, -50%) translateY(-10px)}    
+    100%{transform: translate(-50%, -50%) translateY(0)}
+}
+
+.bunny .mouth {animation: mouthChew 1s forwards, mouthMove 1s ease forwards 4s, mouthBack 1s ease forwards 7.5s;}
+@keyframes mouthChew {
+    0%{width: 45px; height: 30px;}
+    30%{width: 45px; height: 30px;}
+    45%{width: 40px; height: 40px;}
+    55%{width: 45px; height: 30px;}
+    65%{width: 40px; height: 40px;}
+    75%{width: 45px; height: 30px;}
+    85%{width: 40px; height: 40px;}
+    100%{width: 45px; height: 30px;}
+}
+@keyframes mouthMove {
+    0%{transform: translateX(-50%) translateY(0)}    
+    100%{transform: translateX(-50%) translateY(-10px)}
+}
+@keyframes mouthBack {
+    0%{transform: translateX(-50%) translateY(-10px)}    
+    100%{transform: translateX(-50%) translateY(0px)}
+}
+
+.bunny .eye::after {animation: eyeLight 1s ease forwards 4s, eyeBlink 1s forwards 8.5s;}
+@keyframes eyeLight {
+  0% {width: 8px; height: 8px;}
+  100% {width: 13px; height: 13px;}
+}
+@keyframes eyeBlink {
+    0%{opacity: 1;}   
+    30%{opacity: 1;}   
+    45%{opacity: 0;}   
+    60%{opacity: 1;}   
+    75%{opacity: 0;}   
+    100%{opacity: 1;}
+}
+
+/* [animation] balloon blow (arm move) */
+.bunny .arm {animation: armMove 1s ease forwards 4s, armBack 1s ease forwards 7.5s;}
+@keyframes armMove {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-35px);}
+}
+@keyframes armBack {
+  0% {transform: translateY(-35px);}
+  100% {transform: translateY(0);}
+}
+
+/* [animation] fly - fall (position move) */
+.bunny_wrap {animation: fly 4s ease forwards 4s, fall 0.8s ease-in forwards 7.5s;}
+@keyframes fly {
+  0% {transform: translateX(-50%) scale(1) translateY(0);}
+  100% {transform: translateX(-50%) scale(1) translateY(-300px);}
+} 
+@keyframes fall {
+  0% {transform: translateX(-50%) scale(1) translateY(-300px);}
+  70% {transform: translateX(-50%) scale(1) translateY(20px);}
+  100% {transform: translateX(-50%) scale(1) translateY(0);}
+} 
+
+/* [animation] fly - fall (foot move) */
+.rabbit .foot.left {animation: footleftMove 0.6s ease-in forwards 4s, footleftBack 0.6s ease-out forwards 7.5s;}
+@keyframes footleftMove {
+  0% {transform: rotateZ(0deg);}
+  100% {transform: rotateZ(35deg);}
+}
+@keyframes footleftBack {
+  0% {transform: rotateZ(35deg);}
+  100% {transform: rotateZ(0deg);}
+}
+.rabbit .foot.right {animation: footrightMove 0.6s ease-in forwards 4s, footrightBack 0.6s ease-out forwards 7.5s;}
+@keyframes footrightMove {
+  0% {transform: rotateZ(0deg);}
+  100% {transform: rotateZ(-35deg);}
+}
+@keyframes footrightBack {
+  0% {transform: rotateZ(-35deg);}
+  100% {transform: rotateZ(0deg);}
+}
+
+/* [animation] fly - fall (ear move) */
+.rabbit .ear.left {transform-origin: bottom; animation: earleftMove 0.6s ease-in forwards 4s, earleftBack 0.6s ease-out forwards 7.5s;}
+@keyframes earleftMove {
+  0% {transform: rotateZ(-15deg) rotateZ(0deg);}
+  100% {transform: rotateZ(-15deg) rotateZ(-90deg);}
+}
+@keyframes earleftBack {
+  0% {transform: rotateZ(-15deg) rotateZ(-90deg);}
+  100% {transform: rotateZ(-15deg) rotateZ(0deg);}
+}
+.rabbit .ear.right {transform-origin: bottom; animation: earrightMove 0.6s ease-in forwards 4s, earrightBack 0.6s ease-out forwards 7.5s;}
+@keyframes earrightMove {
+  0% {transform: rotateZ(15deg) rotateZ(0deg);}
+  100% {transform: rotateZ(15deg) rotateZ(90deg);}
+}
+@keyframes earrightBack {
+  0% {transform: rotateZ(15deg) rotateZ(90deg);}
+  100% {transform: rotateZ(15deg) rotateZ(0deg);}
+}
