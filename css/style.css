@@ -208,3 +208,8 @@ h1 {
   0% {transform: rotateZ(15deg) rotateZ(90deg);}
   100% {transform: rotateZ(15deg) rotateZ(0deg);}
 }
+
+/*
+  루프 방법 알아보기 infinite
+  깃 허브 다시 올리기
+*/
